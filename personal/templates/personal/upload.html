@@ -1,0 +1,27 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+
+<style type="text/css">
+	form { 
+margin: 0 auto; 
+width:250px;
+}
+</style>
+
+	<h2>Uploads</h2>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input type="file" name="mydoc">
+		<button type="submit">Upload Files</button>
+	</form>
+
+	{% if uploaded_file_url and negative_image_url %}
+
+		<p><img src="{{uploaded_file_url}}", alt="original image"> </p>
+		<p><img src="{{negative_image_url}}", alt="negative image"></p>
+
+	{% endif %}
+
+
+{% endblock %}
